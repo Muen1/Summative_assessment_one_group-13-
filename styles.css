@@ -48,7 +48,8 @@ section:hover .container img{
 
 .container{
     width: 50%;
-    height: 100vh;
+    height: min-content(100vh);
+    
     overflow: clip;
 }
 .container:nth-child(2){
@@ -70,6 +71,7 @@ section:hover .container img{
     display: flex;
     flex-direction: column;
     gap: 8px;
+    transform: scale(0.8);
 }
 #registrationForm .form-group{
     display: flex;
