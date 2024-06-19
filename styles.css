@@ -48,12 +48,13 @@ section:hover .container img{
 
 .container{
     width: 50%;
-    height: min-content(100vh);
+    height: 100vh;
     
     overflow: clip;
 }
 .container:nth-child(2){
-    padding: 4rem 8rem;
+    height: min-content(100vh);
+    padding: 1rem 8rem;
 }
 .error{
     color: rgb(253, 124, 85);
@@ -126,10 +127,18 @@ section:hover .container img{
     border: none;
     width: fit-content;
     min-width: 100%;
-    background: #000;
+    background: linear-gradient(90deg, #7559d3,#6be6ff);
+    background-size: 200%;
+    background-position: left;
     color: white;
+    font-size: 1rem;
     border-radius: 12px;
     cursor: pointer;
+    transition: all .5s ease;
+}
+#registrationForm button:hover{
+    background-size: 100%;
+    background-position: right;
 }
 #registrationForm .rate-group{
     display: flex;
@@ -151,6 +160,13 @@ section:hover .container img{
 }
 
 /* responsive design on mobile an₫ tablet screens */
+@media screen and (min-width: 1030px){
+    .container:nth-child(2){
+        height: min-content(100vh);
+        padding: 4rem 0rem;
+    }
+}
+
 
 @media screen and (max-width: 1020px) {
     .container:nth-child(1){
@@ -163,16 +179,16 @@ section:hover .container img{
         transform: translate(-50%, -50%);
         padding: 0;
         min-width: 95vw;
+        height: fit-content;
         border-radius: 24px;
     }
     #registrationForm{
         transform: scale(0.8);
-        background: rgba(0, 80, 80, 0.4);
+        background: rgba(20, 0, 80, 0.714);
         border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(19.1px);
         -webkit-backdrop-filter: blur(19.1px);
-        border: 1px solid rgba(5, 70, 255, 0.95);
         padding: 1rem 2rem;
         color: white;
     }
@@ -186,5 +202,8 @@ section:hover .container img{
     #registrationForm .form-group input:focus{
         outline: none;
         background: white;
+    }
+    #registrationForm .rate-group .ph{
+        color: white;
     }
 }

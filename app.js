@@ -97,3 +97,14 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         document.getElementById('successMessage').style.visibility = 'hidden';
     }
 });
+
+setTimeout((event) => {
+    event.preventDefault();    
+
+    dateValidation();
+    firstNameValidation();
+    LastnameValidation();
+    
+    emailValidation();
+    textareaValidation();  
+},1)
