@@ -1,11 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>survey form</title>
-</head>
-<body>
-    hello world
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <title>SURVEY FROM</title>
+  </head>
+
+  <body>
+    <section>
+      <div class="container">
+        <img src="./assests/NOISY MARBLES.gif" alt="" srcset="" />
+      </div>
+      <div class="container">
+        <form id="registrationForm">
+            <div>
+                <h2>Survey form</h2>
+                <p>Our friendly team would love to hear from you.</p>
+            </div>
+            <div class="names">
+                <div class="form-group">
+                    <label for="username">Firstname:</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                    <p class="error" id="firstnameError"></p>
+                </div>
+                <div class="form-group">
+                    <label for="username">Lastname:</label>
+                    <input type="text" id="Lastname" name="Lastname" required>
+                    <p class="error" id="LastnameError"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" >
+                <p class="error" id="emailError"></p>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="18" max="100" >
+                <p class="error" id="agep"></p>
+            </div>
+            <div class="form-group">
+                <label for="password">Survey</label>
+                <textarea type="password" id="textarea" name="textarea" required></textarea>
+                <p class="error" id="textareaError"></p>
+            </div>
+            <div class="rate-group">
+              <i onclick="rating(1)" class="ph-star ph"></i>
+              <i onclick="rating(2)" class="ph-star ph"></i>
+              <i onclick="rating(3)" class="ph-star ph"></i>
+              <i onclick="rating(4)" class="ph-star ph"></i>
+              <i onclick="rating(5)" class="ph-star ph"></i>
+            </div>
+            <button type="submit">Register</button>
+            <div class="success" id="successMessage"></div>
+        </form>
+    </div>
+    </section>
+    <script src="app.js"></script>
+  <script>
+      function rating(rate){
+          console.log(rate);
+          const stars = document.querySelectorAll('.ph-star');
+          stars.forEach((star, index) => {
+              if (index < rate) {
+                  star.classList.add('ph-fill');
+              } else {
+                  star.classList.remove('ph-fill');
+              }
+          });
+      }
+  </script>
+  </body>
 </html>

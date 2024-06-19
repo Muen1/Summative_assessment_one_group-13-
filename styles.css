@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Manrope", sans-serif;
+    box-sizing: border-box;
+    text-transform: capitalize;
+}
+
+/* font sizes and format */
+
+h1{
+    font-family: "Manrope", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+h2{
+    font-family: "Manrope", sans-serif;
+    font-size: 2.5rem;
+}
+p{
+    font-family: "Manrope", sans-serif;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* dividing sections */
+
+section{
+    display: flex;
+}
+
+section:hover .container img{
+    animation: showScale 7s ease-in-out infinite;
+}
+@keyframes showScale{
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.5);
+    }
+}
+
+
+.container{
+    width: 50%;
+    height: 100vh;
+    overflow: clip;
+}
+.container:nth-child(2){
+    padding: 4rem 8rem;
+}
+
+.container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* form styling */
+
+#registrationForm{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+#registrationForm .form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+#registrationForm .names{
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+    gap: 8px;
+}
+#registrationForm .names .form-group{
+    width: 100%;
+}
+
+#registrationForm .form-group input{
+    padding: 1rem 1.5rem;
+    outline: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 12px;
+    border: none;
+    height: 48px;
+    transition: all ease 500ms;
+    width: 100%;
+}
+#usernameError{
+    color: red;
+}
+#registrationForm .form-group label{
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+#registrationForm .form-group input:focus{
+    outline: none;
+    background: rgba(128, 128, 128, 0.2);
+}
+#registrationForm .form-group textarea{
+    height: 72px;
+    resize: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    transition: all ease 500ms;
+}
+#registrationForm .form-group textarea:focus{
+    outline: none;
+    border: none;
+    background: rgba(128, 128, 128, 0.2);
+    color: black;
+}
+#registrationForm button{
+    padding: 1rem 2rem;
+    border: none;
+    width: fit-content;
+    min-width: 100%;
+    background: #000;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+}
+#registrationForm .rate-group{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+#registrationForm .rate-group i{
+    color: black;
+    cursor: pointer;
+    transition: all ease 500ms;
+}
+#registrationForm .rate-group i:hover{
+    transform: scale(1.2);
+}
+#registrationForm div:nth-child(1){
+    margin-bottom: 16px;
+}
+
+/* responsive design on mobile an₫ tablet screens */
+
+@media screen and (max-width: 1020px) {
+    .container:nth-child(1){
+        width: 100%;
+    }
+    .container:nth-child(2){
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        min-width: 95vw;
+        border-radius: 24px;
+    }
+    #registrationForm{
+        transform: scale(0.8);
+        background: rgba(0, 80, 80, 0.4);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(19.1px);
+        -webkit-backdrop-filter: blur(19.1px);
+        border: 1px solid rgba(5, 70, 255, 0.95);
+        padding: 1rem 2rem;
+        color: white;
+    }
+    #registrationForm .names{
+        display: flex;
+        flex-direction: column;
+    }
+    #registrationForm .form-group input{
+        background: transparent;
+    }
+    #registrationForm .form-group input:focus{
+        outline: none;
+        background: white;
+    }
+}
