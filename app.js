@@ -1,72 +1,94 @@
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+let isValid = true;
 
-    let isValid = true;
-
-
-
-    function firstNameValidation() {
-        if (!/^[a-zA-Z0-9_]{3,16}$/.test(firstname)) {
-            const firstname = document.getElementById('firstname').value;
-            const lastname = document.getElementById('Lastname').value;
-            const firstnameError = document.getElementById('firstnameError');
-            const lastnameError = document.getElementById('LastnameError');
-            firstnameError.textContent = 'firstname must be 3-16 characters long and contain only letters, numbers, and underscores.';
-            firstnameError.style.visibility = 'visible';
-            isValid = false;
-        } else {
-            firstnameError.style.visibility = 'hidden';
-        }
-    }
-
-    function LastnameValidation() {
-        if (!/^[a-zA-Z0-9_]{3,16}$/.test(lastname)) {
-            lastnameError.textContent = 'Lastname must be 3-16 characters long and contain only letters, numbers, and underscores.';
-            lastnameError.style.visibility = 'visible';
-            isValid = false;
-        } else {
-            lastnameError.style.visibility = 'hidden';
-        }
-    }
-
-    
-
-    function emailValidation() {
-        const email = document.getElementById('email').value;
-        const emailError = document.getElementById('emailError');
-        if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-            emailError.textContent = 'Invalid email format.';
-            emailError.style.visibility = 'visible';
-            isValid = false;
-        } else {
-            emailError.style.visibility = 'hidden';
-        }
-    }
-
-    function textareaValidation() {
-        const textarea = document.getElementById('textarea').value;
-        const textareaError = document.getElementById('textareaError');
-        if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{30,}$/.test(password)) {
-            textareaError.textContent = 'Password must be at least 30 characters long and contain at least one letter and one number.';
-            textareaError.style.visibility = 'visible';
-            isValid = false;
-        } else {
-            passwordError.style.visibility = 'hidden';
-        }
-    }
-
-    if (isValid) {
-        document.getElementById('successMessage').textContent = 'Registration successful!';
-        document.getElementById('successMessage').style.visibility = 'visible';
+function dateValidation() {
+    const date = document.getElementById('date').value;
+    const dateError = document.getElementById('dateError');
+    if (!/^(0?[1-9]|[12][0-9]|3[01])[\-](0?[1-9]|1[012])[\-]\d{4}$/.test(date)) {
+        dateError.textContent = 'Date should be in  DD-MM-YYYY format.';
+        dateError.style.visibility = 'visible';
+        isValid = false;
     } else {
-        document.getElementById('successMessage').style.visibility = 'hidden';
+        dateError.textContent = '';
+        dateError.style.visibility = 'hidden';
     }
-});
+}
+function firstNameValidation() {
+    const firstname = document.getElementById('firstname').value;
+    const firstnameError = document.getElementById('firstnameError');
+    if (!/[a-zA-Z0-9]{3,16}$/gi.test(firstname)) {     
+        
+        firstnameError.textContent = 'firstname must be 3-16 characters long and contain only letters, numbers, and underscores.';
+        firstnameError.style.visibility = 'visible';
+        isValid = false;
+    } else {
+        firstnameError.textContent = ''        
+        firstnameError.style.visibility = 'hidden';
+    }
+}
+function LastnameValidation() {
+    const lastname = document.getElementById('lastname').value;  
+    const lastnameError = document.getElementById('lastnameError');
+    if (!/^[a-zA-Z0-9_]{3,16}$/.test(lastname)) {
+        lastnameError.textContent = 'Lastname must be 3-16 characters long and contain only letters, numbers, and underscores.';
+        lastnameError.style.visibility = 'visible';
+        isValid = false;
+    } else {        
+        lastnameError.textContent = ''  
+        lastnameError.style.visibility = 'hidden';
+    }
+}
+function emailValidation() {
+    const email = document.getElementById('email').value;
+    const emailError = document.getElementById('emailError');
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+        emailError.textContent = 'Invalid email format.';
+        emailError.style.visibility = 'visible';
+        isValid = false;
+    } else {
+        emailError.textContent = '';
+        emailError.style.visibility = 'hidden';
+    }
+}
+function textareaValidation() {
+    const textarea = document.getElementById('textarea').value;
+    const textareaError = document.getElementById('textareaError');
+    if (!/[a-zA-Z0-9]{3,300}$/gi.test(textarea)) {
+        textareaError.textContent = 'Survey content must not contain any special characters.';
+        textareaError.style.visibility = 'visible';
+        isValid = false;
+    } else {
+        textareaError.textContent = '';
+        textareaError.style.visibility = 'hidden';
+    }
+}
+function rating(rate){
+    console.log(rate);
+    const stars = document.querySelectorAll('.ph-star');
+    stars.forEach((star, index) => {
+        if (index < rate) {
+            star.classList.add('ph-fill');
+        } else {
+            star.classList.remove('ph-fill');
+        }
+    });
+}
 
-setInterval(() => {
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+
+    event.preventDefault();    
+
+    dateValidation();
     firstNameValidation();
     LastnameValidation();
     
     emailValidation();
-    textareaValidation();
-},1000)
+    textareaValidation();    
+    
+    if (isValid) {
+        document.getElementById('successMessage').textContent = 'Registration successful!';
+        document.getElementById('successMessage').style = 'display: block; color: green';
+    } else {
+        document.getElementById('successMessage').textContent = '';
+        document.getElementById('successMessage').style.visibility = 'hidden';
+    }
+});
