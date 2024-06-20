@@ -16,9 +16,9 @@ function dateValidation() {
 function firstNameValidation() {
     const firstname = document.getElementById('firstname').value;
     const firstnameError = document.getElementById('firstnameError');
-    if (!/[a-zA-Z0-9]{3,16}$/gi.test(firstname)) {     
+    if (!/[a-zA-Z]{3,16}$/gi.test(firstname)) {     
         
-        firstnameError.textContent = 'firstname must be 3-16 characters long and contain only letters, numbers, and underscores.';
+        firstnameError.textContent = 'firstname must be 3-16 characters long and contain only letters.';
         firstnameError.style.visibility = 'visible';
         firstnameValid = false
     } else {
@@ -30,8 +30,8 @@ function firstNameValidation() {
 function LastnameValidation() {
     const lastname = document.getElementById('lastname').value;  
     const lastnameError = document.getElementById('lastnameError');
-    if (!/^[a-zA-Z0-9_]{3,16}$/.test(lastname)) {
-        lastnameError.textContent = 'Lastname must be 3-16 characters long and contain only letters, numbers, and underscores.';
+    if (!/[a-zA-Z]{3,16}$/.test(lastname)) {
+        lastnameError.textContent = 'Lastname must be 3-16 characters long and contain only letters.';
         lastnameError.style.visibility = 'visible';
         lastNameValid = false
     } else {    
