@@ -34,7 +34,7 @@ section{
 }
 
 section:hover .container img{
-    animation: showScale 7s ease-in-out infinite;
+    animation: showScale 7s ease-in-out infinite alternate;
 }
 @keyframes showScale{
     from{
